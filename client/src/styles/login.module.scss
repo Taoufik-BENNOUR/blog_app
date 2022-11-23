@@ -1,0 +1,45 @@
+
+@use "../styles/app.module.scss";
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: app.$myBG;
+    flex-direction: column;
+   
+    h1{
+        font-size: 20px;
+        color: teal;
+        margin-bottom: 20px;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        width: 200px;
+        gap: 20px;
+        background: white;
+    }
+    input{
+        padding: 10px;
+        border: none;
+        border-bottom: 1px solid teal;
+    }
+    button{
+        padding: 10px;
+        border: none;
+        color: white;
+        background: teal;
+        cursor: pointer;
+    }
+    p{
+        font-size: 10px;
+        text-align: center;
+    }
+    span{
+        font-size: 12px;
+        text-align: center;
+    }
+    
+}
