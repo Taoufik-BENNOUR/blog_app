@@ -1,6 +1,20 @@
 
+$appBg:rgb(4, 1, 44);
 $myBG:rgba(0, 128, 128, 0.49);
+
+*{::-webkit-scrollbar {
+    // background: rgba(0, 0, 0, 0.297);
+    // width: 10px;
+    display: none;
+}
+::-webkit-scrollbar-thumb{
+    // background: teal;
+    // height: 20px;
+}
+}
+
 .app{
+    // background: $appBg;
     display: flex;
     justify-content: center;
     .container{

@@ -1,0 +1,38 @@
+.menu{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    h1{
+        font-size: 20px;
+        color: gray;
+    }
+    .post{
+       display: flex;
+       flex-direction: column; 
+       gap: 10px;
+       img{
+        height: 300px;
+          }
+        h4{
+            font-weight:400;
+        }
+        button{
+            width: max-content;
+            border:none;
+            cursor: pointer;
+            background: teal;
+            color: white;
+            padding: 5px;
+            border: 1px solid white;
+              &:hover{
+                color: teal;
+                background: white;
+                border: 1px solid   rgb(14,165,233);
+              
+            }
+          }
+    }
+    
+  
+}

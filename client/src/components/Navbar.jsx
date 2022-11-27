@@ -11,9 +11,9 @@ const Navbar = () => {
         </div>
         <div className={styles.links}>
           <Link to="/?car=art"><h6>ART</h6></Link>
-          <Link to="/?car=cinema"><h6>cinema</h6></Link>
-          <Link to="/?car=design"><h6>design</h6></Link>
-          <Link to="/?car=food"><h6>food</h6></Link>
+          <Link to="/?car=technology"><h6>TECHNOGOLY</h6></Link>
+          <Link to="/?car=food"><h6>FOOD</h6></Link>
+          <Link to="/?car=sport"><h6>SPORT</h6></Link>
           <span>Name</span>
           <span>logout</span>
           <span className={styles.write}>
