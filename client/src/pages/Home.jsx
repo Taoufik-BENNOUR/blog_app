@@ -1,33 +1,40 @@
-import React, { useState } from 'react'
-import {Link} from "react-router-dom"
+import React, { useEffect, useState } from 'react'
+import {Link, useLocation} from "react-router-dom"
 import styles from "../styles/home.module.scss"
+import axios from "axios"
 const Home = () => {
+const cat = useLocation().search
+const [posts, setposts] = useState([])
+const getText = (html)=>{
+  const doc = new DOMParser().parseFromString(html,"text/html")
+  return doc.body.textContent
+}
+useEffect(() => {
+  const fetchData = async()=>{
+    try {
+      const response = await axios.get(`/posts/all${cat}`)
+      setposts(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  fetchData()
+}, [cat])
 
-  const posts = [{albumId: 1, id: 1, title: 'accusamus beatae ad facilis cum similique qui sunt', url: 'https://via.placeholder.com/600/92c952', thumbnailUrl: 'https://via.placeholder.com/150/92c952'}
- ,
-  {albumId: 1, id: 2, title: 'reprehenderit est deserunt velit ipsam', url: 'https://via.placeholder.com/600/771796', thumbnailUrl: 'https://via.placeholder.com/150/771796'}
- ,
-  {albumId: 1, id: 3, title: 'officia porro iure quia iusto qui ipsa ut modi', url: 'https://via.placeholder.com/600/24f355', thumbnailUrl: 'https://via.placeholder.com/150/24f355'}
- ,
-  {albumId: 1, id: 4, title: 'culpa odio esse rerum omnis laboriosam voluptate repudiandae', url: 'https://via.placeholder.com/600/d32776', thumbnailUrl: 'https://via.placeholder.com/150/d32776'}
-,
-  {albumId: 1, id: 5, title: 'natus nisi omnis corporis facere molestiae rerum in', url: 'https://via.placeholder.com/600/f66b97', thumbnailUrl: 'https://via.placeholder.com/150/f66b97'}
-,
-  ]
-
+console.log(posts);
   return (
     <div className={styles.home}>
       <div className={styles.posts}>
-        {posts.map(post=>
-          <div className={styles.post}>
+        {posts.map((post,i)=>
+          <div key={i} className={styles.post}>
             <div className={styles.image}>
-              <img src={post.url} alt={post.title} /> 
+              <img src={`../images/${post.image}`} alt={post.title} /> 
             </div>
             <div className={styles.content}>
-              <Link to={`/post/${post.id}`}>
-                <h1>{post.title.slice(0,5)}</h1>
+              <Link to={`/post/${post.postId}`}>
+                <h1>{post.title}</h1>
               </Link>
-              <p>{post.title}</p>
+              <p>{getText(post.description)}</p>
               <button>Read more...</button>
             </div>
 
